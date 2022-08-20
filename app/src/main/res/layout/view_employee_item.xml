@@ -25,7 +25,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/civEmployeeImage"
                 android:layout_width="@dimen/_50sdp"
@@ -36,7 +35,6 @@
                 android:layout_marginBottom="@dimen/_8sdp"
                 android:src="@drawable/pic1"
                 app:riv_corner_radius="@dimen/_13sdp" />
-
 
             <LinearLayout
                 android:id="@+id/llEmployeeInfo"
