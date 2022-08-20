@@ -9,14 +9,24 @@
         android:layout_height="match_parent"
         android:background="@color/white">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="Main Activity"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_14ssp" />
+        <include
+            android:id="@+id/iLoader"
+            android:visibility="visible"
+            layout="@layout/view_loader"/>
 
+        <include
+            android:id="@+id/iAppBar"
+            layout="@layout/view_app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_44sdp"
+            android:layout_alignParentTop="true" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvEmployee"
+            android:layout_below="@id/iAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:overScrollMode="never"/>
 
     </RelativeLayout>
 </layout>

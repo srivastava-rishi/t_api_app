@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/abRoot"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:background="@color/white"
+        android:visibility="gone">
+
+        <RelativeLayout
+            android:id="@+id/rlRoot"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <EditText
+                android:id="@+id/search_input"
+                fontPath="fonts/Montserrat-Regular.ttf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:layout_marginBottom="@dimen/_6sdp"
+                android:background="@drawable/search_background"
+                android:ems="10"
+                android:maxLength="10"
+                android:singleLine="true"
+                android:hint="search by name"
+                android:inputType="textPersonName"
+                android:drawableStart="@drawable/ic_baseline_search_24"
+                android:drawablePadding="@dimen/_6sdp"
+                android:drawableTint="@color/chineseBlack2"
+                android:textColor="@color/chineseBlack2"
+                android:textSize="@dimen/_10ssp"
+                android:textColorHint="@color/chineseBlack2"
+                android:visibility="visible"
+                tools:ignore="MissingPrefix" />
+
+        </RelativeLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+</layout>

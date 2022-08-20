@@ -4,11 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/rishi/Desktop/CompanyApps/Tamasha/app/src/main/res/drawable/ic_back.xml" value="0.161" />
+        <entry key="..\:/Users/rishi/Desktop/CompanyApps/Tamasha/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.161" />
         <entry key="..\:/Users/rishi/Desktop/CompanyApps/Tamasha/app/src/main/res/drawable/ripple_light.xml" value="0.161" />
+        <entry key="..\:/Users/rishi/Desktop/CompanyApps/Tamasha/app/src/main/res/drawable/search_background.xml" value="0.161" />
         <entry key="..\:/Users/rishi/Desktop/CompanyApps/Tamasha/app/src/main/res/layout/activity_base.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/rishi/Desktop/CompanyApps/Tamasha/app/src/main/res/layout/activity_main.xml" value="0.25025641025641027" />
         <entry key="..\:/Users/rishi/Desktop/CompanyApps/Tamasha/app/src/main/res/layout/activity_splash.xml" value="0.264" />
+        <entry key="..\:/Users/rishi/Desktop/CompanyApps/Tamasha/app/src/main/res/layout/view_app_bar.xml" value="0.4" />
         <entry key="..\:/Users/rishi/Desktop/CompanyApps/Tamasha/app/src/main/res/layout/view_employee_item.xml" value="0.44805194805194803" />
+        <entry key="..\:/Users/rishi/Desktop/CompanyApps/Tamasha/app/src/main/res/layout/view_loader.xml" value="0.25416666666666665" />
       </map>
     </option>
   </component>
