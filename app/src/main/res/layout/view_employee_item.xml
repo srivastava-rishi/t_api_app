@@ -8,12 +8,14 @@
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cvEmployeeCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_8sdp"
         android:layout_marginTop="@dimen/_8sdp"
         android:layout_marginEnd="@dimen/_8sdp"
         android:layout_marginBottom="@dimen/_8sdp"
+        android:animateLayoutChanges="true"
         android:backgroundTint="@color/ghost_white"
         android:clickable="true"
         android:focusable="true"
