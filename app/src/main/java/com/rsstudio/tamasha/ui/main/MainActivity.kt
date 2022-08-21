@@ -12,9 +12,11 @@ import android.view.View
 import android.widget.LinearLayout
 import androidx.activity.viewModels
 import androidx.cardview.widget.CardView
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rsstudio.tamasha.R
+import com.rsstudio.tamasha.data.network.Resource
 import com.rsstudio.tamasha.data.network.model.Employee
 import com.rsstudio.tamasha.databinding.ActivityMainBinding
 import com.rsstudio.tamasha.ui.base.BaseActivity
@@ -53,16 +55,26 @@ class MainActivity : BaseActivity(){
 
     private fun initObservers() {
 
-        viewModel.employeeData.observe(this) {
+//        viewModel.employeeData.observe(this) {
+//
+//            if (it != null) {
+//                val list: MutableList<Employee> = mutableListOf()
+//                list.add(it)
+//                // submit list
+//                mainAdapter.submitList(list)
+//                binding.iAppBar.abRoot.visibility = View.VISIBLE
+//                binding.iLoader.visibility = View.GONE
+//            }
+//        }
 
-            if (it != null) {
-                val list: MutableList<Employee> = mutableListOf()
-                list.add(it)
-                // submit list
-                mainAdapter.submitList(list)
-                binding.iAppBar.abRoot.visibility = View.VISIBLE
-                binding.iLoader.visibility = View.GONE
-            }
+        viewModel.employeesData.observe(this) {
+
+            // submit list
+            mainAdapter.submitList(it.data!!)
+            binding.iLoader.isVisible = it is Resource.Loading && it.data.isNullOrEmpty()
+            binding.iAppBar.abRoot.isVisible = it is Resource.Success || !it.data.isNullOrEmpty()
+            binding.tvError.isVisible = it is Resource.Error && it.data.isNullOrEmpty()
+            binding.tvError.text = it.error?.localizedMessage
         }
 
     }

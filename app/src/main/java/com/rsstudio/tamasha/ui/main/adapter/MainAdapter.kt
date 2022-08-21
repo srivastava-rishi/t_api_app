@@ -9,6 +9,9 @@ import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.makeramen.roundedimageview.RoundedImageView
 import com.rsstudio.tamasha.R
 import com.rsstudio.tamasha.data.network.model.Data
 import com.rsstudio.tamasha.data.network.model.Employee
@@ -17,7 +20,7 @@ class MainAdapter(
     private var context: Context,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() , Filterable {
 
-    private var list: MutableList<Employee> = mutableListOf()
+    private var list: MutableList<Data> = mutableListOf()
 
     private var filteredEmployeeList: MutableList<Data> = mutableListOf()
 
@@ -30,6 +33,7 @@ class MainAdapter(
         var tvAge: TextView = view.findViewById(R.id.tvEmployeeAge)
         var tvSalary: TextView = view.findViewById(R.id.tvEmployeeSalary)
         var container: CardView = view.findViewById(R.id.cvEmployeeCard)
+        var rivEmployeeImage: RoundedImageView = view.findViewById(R.id.rivEmployeeImage)
         var employeeAgeContainer: LinearLayout = view.findViewById(R.id.llEmployeeAge)
 
         @SuppressLint("SetTextI18n")
@@ -41,6 +45,16 @@ class MainAdapter(
             tvSalary.text = item.employee_salary.toString()
 
             employeeAgeContainer.visibility = if (item.visibility) View.VISIBLE else View.GONE
+
+            // setting image
+            Glide
+                .with(context)
+                .load(item.profile_image)
+                .thumbnail(0.7f)
+                .centerCrop()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .dontAnimate()
+                .into(rivEmployeeImage)
 
             container.setOnClickListener {
                 item.visibility = !item.visibility
@@ -61,16 +75,16 @@ class MainAdapter(
 
         val item = filteredEmployeeList[position]
         if (holder is MainAdapter.ItemViewHolder) {
-            holder.container.animation = AnimationUtils.loadAnimation(context,R.anim.anim_fade_scale)
+//            holder.container.animation = AnimationUtils.loadAnimation(context,R.anim.anim_fade_scale)
             holder.onBind(item,position)
         }
     }
 
-    fun submitList(newList: List<Employee>) {
+    fun submitList(newList: List<Data>) {
         list.clear()
         filteredEmployeeList.clear()
         list.addAll(newList)
-        filteredEmployeeList.addAll(list[0].data)
+        filteredEmployeeList.addAll(list)
         notifyDataSetChanged()
     }
 
@@ -90,12 +104,12 @@ class MainAdapter(
 
                 if(charString.isEmpty()){
                     filteredEmployeeList.clear()
-                    filteredEmployeeList.addAll(list[0].data)
+                    filteredEmployeeList.addAll(list)
                 } else{
 
                     var filteredList:  MutableList<Data> = mutableListOf()
 
-                    list[0].data.filter {
+                    list.filter {
                         (it.employee_name.lowercase().contains(constraint.toString().lowercase().trim()))
                     }.forEach{ filteredList.add(it)}
                     filteredEmployeeList = filteredList

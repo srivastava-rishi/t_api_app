@@ -1,8 +1,11 @@
 package com.rsstudio.tamasha.di
 
+import android.app.Application
 import android.content.Context
+import androidx.room.Room
 import com.google.gson.GsonBuilder
 import com.rsstudio.tamasha.app.App
+import com.rsstudio.tamasha.data.local.db.database.EmployeeDatabase
 import com.rsstudio.tamasha.data.network.apis.EmployeeApiInterface
 import com.rsstudio.tamasha.util.Constant
 import dagger.Module
@@ -34,5 +37,11 @@ object AppModule {
             .build()
             .create(EmployeeApiInterface::class.java)
     }
+
+    @Provides
+    @Singleton
+    fun provideDatabase(app: Application): EmployeeDatabase =
+        Room.databaseBuilder(app, EmployeeDatabase::class.java,"employee_database")
+            .build()
 
 }
